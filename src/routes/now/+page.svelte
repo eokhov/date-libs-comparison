@@ -16,7 +16,8 @@
 
 <Section
   title="Получение разных частей даты от текущего времени"
-  data={[
+  tableHead={["Цель", "Temporal", "Date-fns", "Date"]}
+  tableBody={[
     {
       description: "Получить текущий год",
       temporal: {
@@ -130,7 +131,7 @@
       description: "Получить день в году",
       temporal: {
         call: "Temporal.Now.plainDateISO().dayOfYear",
-        output: Temporal.Now.plainDateISO().dayOfYear
+        output: Temporal.Now.plainDateISO().dayOfYear,
       },
       dateFns: {
         call: "getDayOfYear(new Date())",
@@ -144,8 +145,8 @@
     {
       description: "Получить день недели",
       temporal: {
-        call: "Temporal.Now.plainDateISO().daysInYear",
-        output: Temporal.Now.plainDateISO().dayOfWeek
+        call: "Temporal.Now.plainDateISO().dayOfWeek",
+        output: Temporal.Now.plainDateISO().dayOfWeek,
       },
       dateFns: {
         call: "getDay(new Date())",

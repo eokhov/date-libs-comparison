@@ -1,6 +1,8 @@
 <script>
   import { Temporal } from "temporal-polyfill";
+  import { getYear, getMonth, getDaysInMonth, getDaysInYear } from "date-fns";
   import DemoTable from "$lib/components/DemoTable.svelte";
+  import Section from "$lib/components/Section.svelte";
 
   const currentDate = Temporal.Now.plainDateISO().toString();
 
@@ -26,6 +28,11 @@
       </div>
       <DemoTable
         data={[
+          {
+            call: "plainYearMonth.year",
+            output: plainDate.toPlainYearMonth().toString(),
+            description: "Получение полной даты ISO",
+          },
           {
             call: "plainYearMonth.year",
             output: plainDate.toPlainYearMonth().year,
@@ -95,8 +102,63 @@
     </div>
     <div class="demo-text">
       <h1>PlainYearMonth</h1>
+
+      <p class="date-representation">
+        <b class="current-scope">2024-11</b>-01T23:13:07+09:00
+      </p>
     </div>
   </div>
+
+  <Section
+    title="Получение разных частей даты от текущего времени"
+    tableHead={["Цель", "Temporal", "Date-fns"]}
+    tableBody={[
+      {
+        description: "Получить год из даты",
+        temporal: {
+          call: "plainYearMonth.year",
+          output: plainDate.toPlainYearMonth().year,
+        },
+        dateFns: {
+          call: "getYear(new Date())",
+          output: getYear(new Date()),
+        },
+      },
+      {
+        description: "Получить месяц из даты",
+        temporal: {
+          call: "plainYearMonth.month",
+          output: plainDate.toPlainYearMonth().month,
+        },
+        dateFns: {
+          call: "getMonth(new Date()) + 1",
+          output: getMonth(new Date()) + 1,
+        },
+      },
+      {
+        description: "Получить количество дней в месяце из даты",
+        temporal: {
+          call: "plainYearMonth.month",
+          output: plainDate.toPlainYearMonth().daysInMonth,
+        },
+        dateFns: {
+          call: "getDaysInMonth(new Date())",
+          output: getDaysInMonth(new Date()),
+        },
+      },
+      {
+        description: "Получить количество дней в году из даты",
+        temporal: {
+          call: "plainYearMonth.month",
+          output: plainDate.toPlainYearMonth().daysInYear,
+        },
+        dateFns: {
+          call: "getDaysInYear(new Date())",
+          output: getDaysInYear(new Date()),
+        },
+      },
+    ]}
+  />
 </section>
 
 <style>
@@ -118,5 +180,19 @@
     flex-direction: column;
     align-items: start;
     row-gap: 4px;
+  }
+
+  .date-representation {
+    font-size: 2em;
+    color: var(--text-light-secondary);
+  }
+  .current-scope {
+    color: var(--accent);
+  }
+
+  @media (prefers-color-scheme: light) {
+    .date-representation {
+      color: var(--text-dark-secondary);
+    }
   }
 </style>

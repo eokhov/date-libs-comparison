@@ -1,20 +1,19 @@
 <script>
-  const props = $props();
+  const { title, tableBody, tableHead } = $props();
 </script>
 
 <section>
-  <h3>{props.title}</h3>
+  <h3>{title}</h3>
   <table>
     <thead>
       <tr>
-        <th scope="col">Цель</th>
-        <th scope="col">Temporal</th>
-        <th scope="col">Date-fns</th>
-        <th scope="col">Date</th>
+        {#each tableHead as column}
+          <th scope="col">{column}</th>
+        {/each}
       </tr>
     </thead>
     <tbody>
-      {#each props.data as row}
+      {#each tableBody as row}
         <tr>
           <td>{row.description}</td>
           <td>
@@ -37,16 +36,18 @@
               {row.dateFns.output}
             </div>
           </td>
-          <td>
-            <div>
-              <span>Вызов: </span>
-              <code>{row.dateJs.call}</code>
-            </div>
-            <div>
-              <span>Результат:</span>
-              {row.dateJs.output}
-            </div>
-          </td>
+          {#if row.dateJs}
+            <td>
+              <div>
+                <span>Вызов: </span>
+                <code>{row.dateJs.call}</code>
+              </div>
+              <div>
+                <span>Результат:</span>
+                {row.dateJs.output}
+              </div>
+            </td>
+          {/if}
         </tr>
       {/each}
     </tbody>
@@ -70,6 +71,16 @@
     color: rgba(235, 235, 245, 0.6);
   }
   tbody tr:nth-child(even) {
-    background: #3b3b48;
+    background: #202127;
+  }
+
+  @media (prefers-color-scheme: light) {
+    thead {
+      background-color: #f6f6f7;
+      color: rgba(51, 51, 51, 0.87);
+    }
+    tbody tr:nth-child(even) {
+      background: #f6f6f7;
+    }
   }
 </style>
