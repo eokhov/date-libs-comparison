@@ -22,7 +22,7 @@
       description: "Получить текущий год",
       temporal: {
         call: "Temporal.Now.plainDateISO().year",
-        output: Temporal.Now.plainDateISO(),
+        output: Temporal.Now.plainDateISO().year,
       },
       dateFns: {
         call: "getYear(new Date())",

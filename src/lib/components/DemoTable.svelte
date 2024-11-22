@@ -1,8 +1,9 @@
 <script>
+  import DemoContainer from "./DemoContainer.svelte";
   const props = $props();
 </script>
 
-<div class="demo-table-container">
+<DemoContainer>
   <table>
     <thead>
       <tr>
@@ -21,14 +22,9 @@
       {/each}
     </tbody>
   </table>
-</div>
+</DemoContainer>
 
 <style>
-  .demo-table-container {
-    border-radius: 8px;
-    padding: 16px;
-    background-color: #161618;
-  }
   table {
     width: 100%;
     border-collapse: collapse;
@@ -62,9 +58,6 @@
   @media (prefers-color-scheme: light) {
     thead {
       color: rgba(60, 60, 67, 0.78);
-    }
-    .demo-table-container {
-      background-color: #f6f6f7;
     }
   }
 </style>

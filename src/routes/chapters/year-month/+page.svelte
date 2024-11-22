@@ -29,7 +29,7 @@
       <DemoTable
         data={[
           {
-            call: "plainYearMonth.year",
+            call: "plainYearMonth.toString()",
             output: plainDate.toPlainYearMonth().toString(),
             description: "Получение полной даты ISO",
           },
@@ -93,7 +93,7 @@
             description: "Рассчитать период ОТ определенной даты",
           },
           {
-            call: "plainYearMonth.since('2024-09')",
+            call: "plainYearMonth.equals('2024-09')",
             output: plainDate.toPlainYearMonth().equals("2024-09").toString(),
             description: "Сравнить даты",
           },

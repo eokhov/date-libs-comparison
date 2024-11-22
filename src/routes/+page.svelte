@@ -15,6 +15,10 @@
     <span class="nav-link-title">PlainDate</span>
     <span class="nav-link-desc">Глава про объект Temporal.PlainDate</span>
   </a>
+  <a class="nav-link" href="/chapters/zoned-date-time">
+    <span class="nav-link-title">ZonedDateTime</span>
+    <span class="nav-link-desc">Глава про объект Temporal.ZonedDateTime</span>
+  </a>
 </div>
 
 <style>
