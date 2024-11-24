@@ -5,7 +5,7 @@
   import DemoContainer from "$lib/components/DemoContainer.svelte";
 
   const serverDateTimeISO = '2024-11-18T11:10:13+03:00';
-  const {timeZoneId} = Temporal.Now.zonedDateTimeISO();
+  const timeZoneId = Temporal.Now.timeZoneId();
 
   const zonedInstant = Temporal.Instant.from(serverDateTimeISO).toZonedDateTimeISO(timeZoneId);
   const tzDate = new TZDate(serverDateTimeISO, timeZoneId);
