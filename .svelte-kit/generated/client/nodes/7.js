@@ -1,1 +1,1 @@
-export { default as component } from "../../../../src/routes/instant/+page.svelte";
+export { default as component } from "../../../../src/routes/chapters/zoned-date-time/+page.svelte";
